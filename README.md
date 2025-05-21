@@ -1,5 +1,5 @@
 # Ex.07 Restaurant Website
-## Date: 17/05/2025
+## Date:16.05.2025
 
 ## AIM:
 To develop a static Restaurant website to display the food items and services provided by them.
@@ -28,272 +28,267 @@ Validate the HTML code.
 Publish the website in the given URL.
 
 ## PROGRAM:
-~~~
-INDEX.HTML
+HTML
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Virundhagam - Home</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body class="home">
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="menu.html">Menu</a></li>
-      <li><a href="team.html">Team</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-  <header class="hero">
-    <h1>Welcome to Virundhagam</h1>
-    <p><b>Savor the authentic taste of India</b></p>
-  </header>
-</body>
-</html>
- 
- MENU.HTML
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Little Lemon Restaurant</title>
+    <meta name="description" content="A Brief Description">
+    <meta name="author" content="Luxury Jewellery">
 
- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Menu - Virundhagam</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body class="menu-page">
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="menu.html">Menu</a></li>
-      <li><a href="team.html">Team</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-  <h1 class="page-title">Our Indian Specials</h1>
-  <div class="menu-grid">
-    <div class="menu-item"><img src="chickenbiryani-1.webp" alt="Biryani"><p>Hyderabadi Dum Biryani</p></div>
-    <div class="menu-item"><img src="Shemins-Butter-Chicken-LR.jpg" alt="Butter Chicken"><p>Butter Chicken</p></div>
-    <div class="menu-item"><img src="palak-panner.jpeg" alt="Palak Paneer"><p>Palak Paneer</p></div>
-    <div class="menu-item"><img src="homemade-samosa-recipe1.jpg" alt="Samosa"><p>Punjabi Samosa</p></div>
-    <div class="menu-item"><img src="dosa.jpg" alt="Dosa"><p>Masala Dosa</p></div>
-    <div class="menu-item"><img src="chole-bhature.jpg" alt="Chole Bhature"><p>Chole Bhature</p></div>
-    <div class="menu-item"><img src="Rajma-Chawal.jpg" alt="Rajma"><p>Rajma Chawal</p></div>
-    <div class="menu-item"><img src="Rasmalai-recipe-01-500x375.jpg" alt="Rasmalai"><p>Rasmalai</p></div>
-    <div class="menu-item"><img src="gulab-jamun-desi-ghee.jpg" alt="Gulab Jamun"><p>Gulab Jamun</p></div>
-    <div class="menu-item"><img src="bhel-poori-gravy-re2.jpg" alt="Chaat"><p>Chennai Street Chaat</p></div>
-  </div>
-</body>
-</html>
+    <!-- Load static files -->
+    {% load static %}
 
-TEAM.HTML
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Our Team</title>
-  <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
-<body class="team-page">
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="menu.html">Menu</a></li>
-      <li><a href="team.html">Team</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-  <section class="team-section">
-    <h2 style="text-align: center;">Meet Our Culinary Experts</h2>
-    <div class="team-grid">
-      <div class="team-member">
-        <img src="manager.jpg" alt="Ahamed">
-        <h3>Ahamed - Restaurant Manager</h3>
-      </div>
-      <div class="team-member">
-        <img src="lead chef.jpg" alt="Chef Nishanth">
-        <h3>Chef Nishanth - Head Chef</h3>
-      </div>
-      <div class="team-member">
-        <img src="Sous chef.jpg" alt="Aakil">
-        <h3>Aakil - Sous Chef</h3>
-      </div>
-      <div class="team-member">
-        <img src="server.jpg" alt="Sanjaiganth">
-        <h3>Sanjaiganth - Lead Server</h3>
-      </div>
-      <div class="team-member">
-        <img src="chai expert.jpg" alt="Kevin">
-        <h3>Kevin - Chai Expert</h3>
-      </div>
-      <div class="team-member">
-        <img src="recepionist.jpg" alt="Jebin">
-        <h3>Jebin - Receptionist</h3>
-      </div>
-    </div>
-  </section>
+<body>
+
+    <!-- Header section -->
+    <header>
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="Client Logo">
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content section -->
+    <main>
+        <!-- Promotional Banner -->
+        <section class="promo">
+            <h1>Welcome to Little Lemon</h1>
+            <p>Have your Favourite taste...</p>
+            <img src="{% static 'images/img1.png' %}" alt="banner">
+            <p>Savor the best of both worlds with our delicious veg and non-veg dishes, crafted to perfection. From mouthwatering starters to irresistible snacks, every bite is a burst of flavor. Join us for a dining experience that satisfies every craving!</p>
+        </section>
+
+        <!-- Three columns section -->
+        <section class="three-columns">
+            <article class="column">
+                <h2>Starters and Snacks</h2>
+                <img src="{% static 'images/img2.png' %}" alt="Starters&Snacks">
+                <p>*  Kickstart your cravings with our irresistible starters and snacks, bursting with flavor in every bite.</p>
+                <p>*  Perfectly crafted to tease your taste buds, our delicious selection is the ultimate treat for any occasion.</p> 
+                <p>*  Indulge in the perfect bite-sized delights!</p>
+            </article>
+            <article class="column">
+                <h2>Vegetarian</h2>
+                <img src="{% static 'images/img3.png' %}" alt="Veg">
+                <p>*  Delight in our fresh, flavorful vegetarian dishes that celebrate nature's finest ingredients.</p>
+                <p>*  Each meal is crafted to nourish your body and satisfy your taste buds.</p>
+                <p>*  Experience the vibrant taste of wholesome, plant-based goodness!</p>
+            </article>
+            <article class="column">
+                <h2>Non-Vegetarian</h2>
+                <img src="{% static 'images/img4.png' %}" alt="NonVeg">
+                <p>*  Indulge in the rich, savory flavors of our premium non-veg dishes, expertly crafted for true food lovers.</p>
+                <p>*  From tender meats to bold spices, every bite promises a taste of perfection.</p>
+                <p>*  Satisfy your cravings with our irresistible non-veg delights!</p>
+            </article>
+        </section>
+    </main>
+
+    <!-- Footer section -->
+    <footer>
+        <div class="footer-left">
+            <img src="{% static 'images/logo_footer.png' %}" alt="Client Logo">
+        </div>
+        <div class="footer-right">
+            <p>&copy; 2024 Little Lemon. All rights reserved.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
 
-CONTACT.HTML
+CSS
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Our Team</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body class="team-page">
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="menu.html">Menu</a></li>
-      <li><a href="team.html">Team</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-  <section class="team-section">
-    <h2 style="text-align: center;">Meet Our Culinary Experts</h2>
-    <div class="team-grid">
-      <div class="team-member">
-        <img src="manager.jpg" alt="Ahamed">
-        <h3>Ahamed - Restaurant Manager</h3>
-      </div>
-      <div class="team-member">
-        <img src="lead chef.jpg" alt="Chef Nishanth">
-        <h3>Chef Nishanth - Head Chef</h3>
-      </div>
-      <div class="team-member">
-        <img src="Sous chef.jpg" alt="Aakil">
-        <h3>Aakil - Sous Chef</h3>
-      </div>
-      <div class="team-member">
-        <img src="server.jpg" alt="Sanjaiganth">
-        <h3>Sanjaiganth - Lead Server</h3>
-      </div>
-      <div class="team-member">
-        <img src="chai expert.jpg" alt="Kevin">
-        <h3>Kevin - Chai Expert</h3>
-      </div>
-      <div class="team-member">
-        <img src="recepionist.jpg" alt="Jebin">
-        <h3>Jebin - Receptionist</h3>
-      </div>
-    </div>
-  </section>
-</body>
-</html>
-
-STYLING.CSS
-
-body {
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  background-color: #111;
-  color: #eee;
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-nav {
-  background-color: #000;
-  padding: 15px;
-  text-align: center;
+/* Body styling */
+body {
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.6;
+    background-color: #fafafa; /* Light background for a clean look */
+}
+
+/* Header section */
+header {
+    display: block;
+    align-items: center;
+    padding: 50px 30px;
+    background-color: #333;
+    color: #fff;
+    text-align: center; /* Center the header content */
+}
+
+.logo img {
+    display: block;
+    width: 250px; /* Adjust size for better proportion */
+    margin: 0 auto 20px auto; /* Center logo and add margin */
 }
 
 nav ul {
-  list-style: none;
-  padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center; /* Center navigation items */
+    margin-top: 10px;
 }
 
 nav ul li {
-  display: inline-block;
-  margin: 0 15px;
+    margin: 0 15px; /* Add space between nav items */
 }
 
 nav ul li a {
-  color: #f2c94c;
-  text-decoration: none;
-  font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    padding: 15px 20px;
+    transition: background 0.3s ease, transform 0.3s ease; /* Add transition for hover effects */
+    font-size: 1.2rem;
+    font-weight: bold; /* Make links more prominent */
 }
 
-.hero {
-  background: url('images/hero_indian.jpg') no-repeat center center/cover;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+nav ul li a:hover {
+    background-color: #555;
+    border-radius: 5px;
+    transform: scale(1.1); /* Scale effect on hover */
 }
 
-.hero h1 {
-  font-size: 70px;
-  color: #f2c94c;
+/* Promo banner */
+.promo {
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 50px 20px;
+    margin-bottom: 40px;
+    border-top: 5px solid #333; /* Add top border for distinction */
 }
 
-.hero p {
-  font-size: 1.5rem;
-  color: #ccc;
+.promo h1 {
+    font-size: 3rem; /* Larger headline */
+    margin-bottom: 15px;
+    color: #333;
 }
 
-.page-title {
-  text-align: center;
-  font-size: 2.5rem;
-  margin: 30px 0;
-  color: #f2c94c;
+.promo p {
+    font-size: 1.5rem;
+    color: #e60000; /* Red text for promotional effect */
+    margin-bottom: 25px;
+    font-style: italic; /* Add a style effect */
 }
 
-.menu-grid, .team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  padding: 30px;
-  text-align: center;
+.promo img {
+    max-width: 100%; /* Make sure the banner image scales properly */
+    height: auto;
+    border-radius: 8px; /* Rounded corners for the banner */
 }
 
-.menu-item, .team-member {
-  background: #222;
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+/* Three columns layout */
+.three-columns {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 20px; /* Provide spacing between columns */
 }
 
-.menu-item img, .team-member img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 10px;
+.column {
+    text-align: center;
+    flex: 1;
+    margin: 0 10px;
+    background-color: #fff; /* Add background for each column */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners for each column */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
 }
 
-.menu-item p, .team-member h3 {
-  color: #f2c94c;
-  margin-top: 10px;
+.column img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
 }
 
-.team-section h2 {
-  color: #f2c94c;
+.column img:hover {
+    transform: scale(1.05); /* Hover zoom effect on images */
 }
 
-.contact-page {
-  background: url('images/contact_indian.jpg') no-repeat center center/cover;
-  color: white;
+.column h2 {
+    margin: 15px 0;
+    color: #333;
+    font-size: 2rem; /* Larger headings for clarity */
 }
 
-~~~
+.column p {
+    font-size: 1rem;
+    color: #555; /* Slightly lighter text */
+}
+
+/* Footer styling */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-left img {
+    width: 150px; /* Smaller footer logo */
+}
+
+.footer-right p {
+    margin: 0;
+    font-size: 1.2rem;
+    text-align: right; /* Align the copyright text to the right */
+    color: #ccc; /* Light grey for footer text */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .three-columns {
+        flex-direction: column;
+    }
+
+    .column {
+        margin-bottom: 20px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    nav ul li {
+        margin-bottom: 10px;
+    }
+
+    .promo {
+        padding: 30px 20px; /* Adjust promo section padding for small screens */
+    }
+}
 
 
-## OUTPUT:
 
-HOME 
-![alt text](<Screenshot 2025-05-18 160723.png>)\
-MENU
-![alt text](<Screenshot 2025-05-18 160736.png>)
-TEAM
-![alt text](<Screenshot 2025-05-18 160750.png>)
-CONTACT
-![alt text](<Screenshot 2025-05-18 160958.png>)
+
+## OUTPUT
+![Screenshot 2025-05-16 205312](https://github.com/user-attachments/assets/a41ebaa9-2f61-47a0-b8ee-a9789d2fa9f1)
+
 
 
 ## RESULT:
