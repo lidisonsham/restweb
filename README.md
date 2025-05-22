@@ -1,5 +1,5 @@
 # Ex.07 Restaurant Website
-## Date:16.05.2025
+## Date:
 
 ## AIM:
 To develop a static Restaurant website to display the food items and services provided by them.
@@ -28,267 +28,514 @@ Validate the HTML code.
 Publish the website in the given URL.
 
 ## PROGRAM:
-HTML
+```
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Little Lemon Restaurant</title>
-    <meta name="description" content="A Brief Description">
-    <meta name="author" content="Luxury Jewellery">
-
-    <!-- Load static files -->
-    {% load static %}
-
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>Gourmet Haven | Fine Dining Experience</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #e63946;
+            --secondary: #f1faee;
+            --dark: #1d3557;
+            --light: #a8dadc;
+            --accent: #457b9d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            position: absolute;
+            top: 0;
+            width: 90%;
+            max-width: 1200px;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hero-content {
+            margin-top: 60px;
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            animation: fadeIn 2s ease;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            animation: fadeIn 2.5s ease;
+        }
+        
+        .btn:hover {
+            background: #c1121f;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Menu Section */
+        .menu-section {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 25%;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .menu-item {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .menu-item-content {
+            padding: 20px;
+        }
+        
+        .menu-item-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .menu-item-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 100px 0;
+            background-color: var(--secondary);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .social-links {
+            margin-bottom: 30px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+            
+            nav {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+            }
+            
+            .nav-links li {
+                margin: 0 10px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-
-    <!-- Header section -->
+    <!-- Header/Hero Section -->
     <header>
-        <div class="logo">
-            <img src="{% static 'images/logo.png' %}" alt="Client Logo">
-        </div>
-        <nav>
-            <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+        <nav class="container">
+            <div class="logo">Gourmet Haven</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-    </header>
-
-    <!-- Main content section -->
-    <main>
-        <!-- Promotional Banner -->
-        <section class="promo">
-            <h1>Welcome to Little Lemon</h1>
-            <p>Have your Favourite taste...</p>
-            <img src="{% static 'images/img1.png' %}" alt="banner">
-            <p>Savor the best of both worlds with our delicious veg and non-veg dishes, crafted to perfection. From mouthwatering starters to irresistible snacks, every bite is a burst of flavor. Join us for a dining experience that satisfies every craving!</p>
-        </section>
-
-        <!-- Three columns section -->
-        <section class="three-columns">
-            <article class="column">
-                <h2>Starters and Snacks</h2>
-                <img src="{% static 'images/img2.png' %}" alt="Starters&Snacks">
-                <p>*  Kickstart your cravings with our irresistible starters and snacks, bursting with flavor in every bite.</p>
-                <p>*  Perfectly crafted to tease your taste buds, our delicious selection is the ultimate treat for any occasion.</p> 
-                <p>*  Indulge in the perfect bite-sized delights!</p>
-            </article>
-            <article class="column">
-                <h2>Vegetarian</h2>
-                <img src="{% static 'images/img3.png' %}" alt="Veg">
-                <p>*  Delight in our fresh, flavorful vegetarian dishes that celebrate nature's finest ingredients.</p>
-                <p>*  Each meal is crafted to nourish your body and satisfy your taste buds.</p>
-                <p>*  Experience the vibrant taste of wholesome, plant-based goodness!</p>
-            </article>
-            <article class="column">
-                <h2>Non-Vegetarian</h2>
-                <img src="{% static 'images/img4.png' %}" alt="NonVeg">
-                <p>*  Indulge in the rich, savory flavors of our premium non-veg dishes, expertly crafted for true food lovers.</p>
-                <p>*  From tender meats to bold spices, every bite promises a taste of perfection.</p>
-                <p>*  Satisfy your cravings with our irresistible non-veg delights!</p>
-            </article>
-        </section>
-    </main>
-
-    <!-- Footer section -->
-    <footer>
-        <div class="footer-left">
-            <img src="{% static 'images/logo_footer.png' %}" alt="Client Logo">
+        
+        <div class="hero-content container">
+            <h1>Exquisite Dining Experience</h1>
+            <p>Discover culinary perfection with our chef's seasonal creations, crafted from the finest locally-sourced ingredients</p>
+            <a href="#menu" class="btn">View Our Menu</a>
         </div>
-        <div class="footer-right">
-            <p>&copy; 2024 Little Lemon. All rights reserved.</p>
+    </header>
+    
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Signature Dishes</h2>
+            </div>
+            
+            <div class="menu-grid">
+                <!-- Menu Item 1 -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Salmon Dish">
+                    <div class="menu-item-content">
+                        <h3>Pan-Seared Salmon</h3>
+                        <p>Fresh Atlantic salmon with lemon butter sauce, seasonal vegetables, and herb-infused rice</p>
+                        <span class="price">$28.50</span>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 2 -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Salad Dish">
+                    <div class="menu-item-content">
+                        <h3>Mediterranean Salad</h3>
+                        <p>Fresh greens with cherry tomatoes, cucumber, olives, feta cheese, and balsamic dressing</p>
+                        <span class="price">$18.00</span>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 3 -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Pasta Dish">
+                    <div class="menu-item-content">
+                        <h3>Truffle Pasta</h3>
+                        <p>Handmade pasta with wild mushrooms, truffle oil, parmesan, and fresh herbs</p>
+                        <span class="price">$24.75</span>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 4 -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Steak Dish">
+                    <div class="menu-item-content">
+                        <h3>Filet Mignon</h3>
+                        <p>8oz premium cut with red wine reduction, garlic mashed potatoes, and grilled asparagus</p>
+                        <span class="price">$36.00</span>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 5 -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Dessert Dish">
+                    <div class="menu-item-content">
+                        <h3>Chocolate Soufflé</h3>
+                        <p>Warm chocolate soufflé with vanilla bean ice cream and raspberry coulis</p>
+                        <span class="price">$12.50</span>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 6 -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1560717843-60cb77e8d2e6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Wine Selection">
+                    <div class="menu-item-content">
+                        <h3>Wine Pairing</h3>
+                        <p>Sommelier-selected wine pairing for each course (3 glasses)</p>
+                        <span class="price">$25.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Our Culinary Story</h2>
+                    <p>Founded in 2010, Gourmet Haven has been serving exceptional cuisine in a warm, inviting atmosphere. Our executive chef, with over 20 years of international experience, creates dishes that blend traditional techniques with innovative flavors.</p>
+                    <p>We pride ourselves on sourcing ingredients from local farmers and producers, ensuring the freshest seasonal offerings while supporting our community.</p>
+                    <p>Our restaurant has been awarded the "Best Fine Dining Experience" by City Magazine for three consecutive years.</p>
+                    <a href="#contact" class="btn">Reserve a Table</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1581349485608-9469926a8e5e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Restaurant Interior">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Make a Reservation</h2>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Culinary Street, Foodie City, FC 12345</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@gourmethaven.com</p>
+                    <p><i class="fas fa-clock"></i> Open Tuesday-Sunday: 5:00 PM - 11:00 PM</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="tel" placeholder="Phone Number">
+                        <input type="date" placeholder="Date">
+                        <input type="time" placeholder="Time">
+                        <input type="number" placeholder="Number of Guests" min="1">
+                        <textarea placeholder="Special Requests"></textarea>
+                        <button type="submit" class="btn">Book Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-yelp"></i></a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Gourmet Haven. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
-
 </body>
 </html>
+```
 
-CSS
-
-/* General reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Body styling */
-body {
-    font-family: 'Times New Roman', Times, serif;
-    line-height: 1.6;
-    background-color: #fafafa; /* Light background for a clean look */
-}
-
-/* Header section */
-header {
-    display: block;
-    align-items: center;
-    padding: 50px 30px;
-    background-color: #333;
-    color: #fff;
-    text-align: center; /* Center the header content */
-}
-
-.logo img {
-    display: block;
-    width: 250px; /* Adjust size for better proportion */
-    margin: 0 auto 20px auto; /* Center logo and add margin */
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center; /* Center navigation items */
-    margin-top: 10px;
-}
-
-nav ul li {
-    margin: 0 15px; /* Add space between nav items */
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #fff;
-    padding: 15px 20px;
-    transition: background 0.3s ease, transform 0.3s ease; /* Add transition for hover effects */
-    font-size: 1.2rem;
-    font-weight: bold; /* Make links more prominent */
-}
-
-nav ul li a:hover {
-    background-color: #555;
-    border-radius: 5px;
-    transform: scale(1.1); /* Scale effect on hover */
-}
-
-/* Promo banner */
-.promo {
-    background-color: #f4f4f4;
-    text-align: center;
-    padding: 50px 20px;
-    margin-bottom: 40px;
-    border-top: 5px solid #333; /* Add top border for distinction */
-}
-
-.promo h1 {
-    font-size: 3rem; /* Larger headline */
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.promo p {
-    font-size: 1.5rem;
-    color: #e60000; /* Red text for promotional effect */
-    margin-bottom: 25px;
-    font-style: italic; /* Add a style effect */
-}
-
-.promo img {
-    max-width: 100%; /* Make sure the banner image scales properly */
-    height: auto;
-    border-radius: 8px; /* Rounded corners for the banner */
-}
-
-/* Three columns layout */
-.three-columns {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    gap: 20px; /* Provide spacing between columns */
-}
-
-.column {
-    text-align: center;
-    flex: 1;
-    margin: 0 10px;
-    background-color: #fff; /* Add background for each column */
-    padding: 20px;
-    border-radius: 8px; /* Rounded corners for each column */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
-}
-
-.column img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-
-.column img:hover {
-    transform: scale(1.05); /* Hover zoom effect on images */
-}
-
-.column h2 {
-    margin: 15px 0;
-    color: #333;
-    font-size: 2rem; /* Larger headings for clarity */
-}
-
-.column p {
-    font-size: 1rem;
-    color: #555; /* Slightly lighter text */
-}
-
-/* Footer styling */
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.footer-left img {
-    width: 150px; /* Smaller footer logo */
-}
-
-.footer-right p {
-    margin: 0;
-    font-size: 1.2rem;
-    text-align: right; /* Align the copyright text to the right */
-    color: #ccc; /* Light grey for footer text */
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .three-columns {
-        flex-direction: column;
-    }
-
-    .column {
-        margin-bottom: 20px;
-    }
-
-    nav ul {
-        flex-direction: column;
-        margin-top: 20px;
-    }
-
-    nav ul li {
-        margin-bottom: 10px;
-    }
-
-    .promo {
-        padding: 30px 20px; /* Adjust promo section padding for small screens */
-    }
-}
-
-
-
-
-## OUTPUT
-![Screenshot 2025-05-16 205312](https://github.com/user-attachments/assets/a41ebaa9-2f61-47a0-b8ee-a9789d2fa9f1)
-
+## OUTPUT:
+![image](https://github.com/user-attachments/assets/474e38e4-0fbf-4ecf-9108-910a44d4e42d)
+![image](https://github.com/user-attachments/assets/63d030f8-9ffd-41ab-8b90-b2ba68b5fee8)
 
 
 ## RESULT:
